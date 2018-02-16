@@ -25,7 +25,7 @@
 
 <?php
 $res = " ";
-if ($_POST['count']) {
+if (!empty($_POST['count'])) {
     $a = $_POST['a'];
     $b = $_POST['b'];
    $res = implode(" ", getCommonWords($a, $b));

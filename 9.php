@@ -3,7 +3,7 @@
 echo "<br>";
 
 
-// А как работать с кирилицей?
+
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +28,18 @@ if ($_POST['submit']) {
     $text = $_POST['text'];
 	$res = revers($text);
 }
-function revers($arg) {
+/*function revers($arg) {
 	$arr = str_split($arg);
 	$arr = array_reverse($arr);
-	return implode('', $arr);
-}
+	return implode('', $arr);}*/
+	
+	function revers($arg) { //для кириллицы
+		$res = '';
+		for ($i = 0; $i < mb_strlen($arg); $i++) {
+        $res = mb_substr($arg, $i, 1).$res;
+		}
+	return $res;
+	}
+
 echo "<b>Было:</b>$text <br> 
 <b>Стало:</b> $res ";  
